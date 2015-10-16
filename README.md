@@ -22,7 +22,7 @@ Once the completed this work will also be available in Spanish.
     - WordPress
     - Magento (maybe)
 2. Javascript
-    - AngularJS
+    - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/wiki/Learning-AngularJS---A-Review)
     - ReactJS
     - Babel
     - TypeScript
