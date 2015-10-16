@@ -71,16 +71,16 @@ Your **package.json** file should look like this now.
 
 Now Lets go ahead and tell our new project that we want to use **ReactJS** 
 
-1. Run the command **npm install react --save**
+1. Run the command **npm install react --save-dev babel-loader**
 2. Then run the command **npm intall react-dom --save** to install **react-dom**.
 
 After this process your **package.json** file should look like this.
 ```javascript
 
 {
-  "name": "mybook-reactjs",
+  "name": "test-reactjs",
   "version": "1.0.0",
-  "description": "ReactJS code for the Software Engineering Open Source Book",
+  "description": "Testing ReactJS for the first time! Yeeeeei!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -92,6 +92,9 @@ After this process your **package.json** file should look like this.
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "react": "^0.14.0",
     "webpack": "^1.12.2"
   }
 }
