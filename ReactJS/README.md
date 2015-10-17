@@ -341,7 +341,7 @@ class CustomYourFather extends React.Component
     render()
     {
         //return React.DOM.h1(null, this.props.name + ', I am your father!' ) //Curlys are better!
-        return <h1>{this.props.name}, I'm your father!</h1>
+        return <h1>{this.props.name}, Im your father!</h1>
     }
 }
 
