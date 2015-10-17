@@ -393,7 +393,7 @@ class CustomYourFather extends React.Component
         //return React.DOM.h1(null, this.props.name + ', I am your father!' )
         return(
             <div>
-                <h1>{this.state.name}, I'm your father!</h1>
+                <h1>{this.state.name}, Im your father!</h1>
                 <input type="text" ref='name' />
                 <input type="button" value="Update state" onClick={this.updateMessage.bind(this)} />
             </div>
