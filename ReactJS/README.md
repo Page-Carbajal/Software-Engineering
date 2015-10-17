@@ -32,9 +32,7 @@ Before you start you'll need to install **npm** if you don't have it already.
 
 ####1. Create test-reactjs project
 
-Kickstart this project by running the command 
-
-`npm init` on a folder named **test-reactjs**, or any other name you like.
+Kickstart this project by running the command `$ npm init` on a folder named **test-reactjs**, or any other name you like.
 
 Complete the process to create the project. **NPM** will then build an empty **package.json** file on the folder just like this.
 
@@ -73,8 +71,8 @@ Your **package.json** file should look like this now.
 
 Now Lets go ahead and tell our new project that we want to use **ReactJS** 
 
-1. Run the command **npm install react --save-dev babel-loader**
-2. Then run the command **npm intall react-dom --save** to install **react-dom**.
+1. Run the command `$ npm install react --save-dev babel-loader`
+2. Then run the command `$ npm install react-dom --save` to install **react-dom**.
 
 After this process your **package.json** file should look like this.
 ```javascript
@@ -156,7 +154,7 @@ In a traditional web environment you would traditionally try to include the a nu
 
 This is not what we are doing here. We are building a bundle. A bundle will package all of your javascript in a single file. In our case is called **bundle.js**
 
-Run the command `bash webpack ` from the terminal. A new file called **bundle.js** is created on the **dist** folder. 
+Run the command `$ webpack ` from the terminal. A new file called **bundle.js** is created on the **dist** folder. 
 
 It should look something like this. 
 
