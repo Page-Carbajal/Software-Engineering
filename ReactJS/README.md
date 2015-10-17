@@ -217,3 +217,79 @@ It should look something like this.
 Test it out again. Run the command `$ node ./dist/bundle.js`. 
 
 ####7. First ReactJS sample
+
+Are you ready to test this on your browser?
+
+Lets create 2 new files. demo.html with this basic code
+```html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReactJS Demo</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+</html>
+
+```
+
+That's it for HTML right now. Time to run some JSX magic.
+
+But before we do that. We are going to make sure to tell **webpack** it should babelify all **.js** files with this code
+```javascript
+
+        loaders: [
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+        ]
+
+```
+
+Replace your empty **loaders** variable in your **webpack.config.js** for the one above. 
+ 
+This line is telling webpack to run **babel-loader** for every **.js** file before adding it to the bundle. This way you can simply **require** all of your **JSX** components.
+
+**index.js**
+
+Copy and paste this code into your file
+
+```javascript
+
+var React = require('react');
+var reactDOM = require('react-dom');
+
+reactDOM.render(
+
+    <h1>Luk, I'm your fater!</h1>,
+
+    document.getElementById('example')
+
+);
+
+```
+
+This JSX component. Receives 2 parameters. The HTML to be rendered and the **target** element. To append the HTML to.
+
+Next step. Add this code to index.js
+
+```javascript
+
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+ReactDOM.render(
+
+    <h1>Luk, I'm your father!</h1>,
+
+    document.getElementById('example')
+
+);
+
+```
+
+Least but not last. Run the `$ webpack ` command from withing your project. The new bundle.js file will be created and you will see its size is around 600kb. Do not worry about that now. Just open the **index.html** file on your browser of choice. 
+
+Voila, you are now officially using react. Good Job!
+
