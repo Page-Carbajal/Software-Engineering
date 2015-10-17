@@ -7,7 +7,8 @@ class CustomYourFather extends React.Component
 {
     render()
     {
-        return React.DOM.h1(null, this.props.name + ', I am your father!' )
+        //return React.DOM.h1(null, this.props.name + ', I am your father!' )
+        return <h1>{this.props.name}, I'm your father!</h1>
     }
 }
 
@@ -21,7 +22,7 @@ class YourFather extends React.Component
 
 ReactDOM.render(
 
-    <CustomYourFather name="Luk" />,
+    <CustomYourFather name="John Connor" />,
 
     document.getElementById('example')
 

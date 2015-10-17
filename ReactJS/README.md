@@ -274,7 +274,7 @@ This JSX component. Receives 2 parameters. (1) The HTML to be rendered and (2) t
 
 Least but not last. Run the `$ webpack ` command from withing your project. The new bundle.js file will be created and you will see its size is around 600kb. Do not worry about that now. Just open the **index.html** file on your browser of choice. 
 
-Voila, you are now officially using react. Good Job!
+Voila, you are now officially using react.  **Good Job!**
 
 ###EcmaScript 6 - A taste
 
@@ -292,7 +292,9 @@ import ReactDOM from 'react-dom';
 
 ```
 
-What did we do here?. Well one of those new features in JS6 is import. Both instructions are telling Javascript to import the modules into a variable. You can skip the variable part if you want, or even import only a subset of function directly into your class. However we are not doing that here yet.
+What did we do here? 
+
+Well one of those new features in JS6 is **import**. Both instructions are telling Javascript to ***import*** the modules into a variable. You can skip the variable part and import only a subset of functions directly into your class using {function1, function2}.
 
 Moving forward. Lets close this introduction to react by creating a couple of JSX components we can use with **ReactDOM.render**
 
@@ -338,7 +340,8 @@ class CustomYourFather extends React.Component
 {
     render()
     {
-        return React.DOM.h1(null, this.props.name + ', I am your father!' )
+        //return React.DOM.h1(null, this.props.name + ', I am your father!' ) //Curlys are better!
+        return <h1>{this.props.name}, I'm your father!</h1>
     }
 }
 
@@ -361,7 +364,6 @@ ReactDOM.render(
 ```
 
 The **CustomYourFather** component uses the property **name** to render the message "John Connor, I am your father!". Pretty straight forward.
-
 
 
 ##VirtualDOM and Data Binding

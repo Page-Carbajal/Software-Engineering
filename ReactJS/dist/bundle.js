@@ -80,7 +80,13 @@
 	    _createClass(CustomYourFather, [{
 	        key: 'render',
 	        value: function render() {
-	            return React.DOM.h1(null, this.props.name + ', I am your father!');
+	            //return React.DOM.h1(null, this.props.name + ', I am your father!' )
+	            return React.createElement(
+	                'h1',
+	                null,
+	                this.props.name,
+	                ', I\'m your father!'
+	            );
 	        }
 	    }]);
 
@@ -106,7 +112,7 @@
 	    return YourFather;
 	})(React.Component);
 
-	_reactDom2['default'].render(React.createElement(CustomYourFather, { name: 'Luk' }), document.getElementById('example'));
+	_reactDom2['default'].render(React.createElement(CustomYourFather, { name: 'John Connor' }), document.getElementById('example'));
 
 /***/ },
 /* 1 */
