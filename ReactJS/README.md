@@ -27,8 +27,6 @@ Before you start you'll need to install **npm** if you don't have it already.
 4. Review our folder structure
 5. Setting up webpack.config.js
 6. Build bundle.js
-7. First ReactJS sample
-
 
 ####1. Create test-reactjs project
 
@@ -216,11 +214,11 @@ It should look something like this.
 
 Test it out again. Run the command `$ node ./dist/bundle.js`. 
 
-####7. First ReactJS sample
+##I'm Your Father - Our first ReactJS example
 
-Are you ready to test this on your browser?
+Lets create 2 new files. 
 
-Lets create 2 new files. demo.html with this basic code
+Index.html with this basic code
 ```html
 
 <!DOCTYPE html>
@@ -251,9 +249,8 @@ Replace your empty **loaders** variable in your **webpack.config.js** for the on
  
 This line is telling webpack to run **babel-loader** for every **.js** file before adding it to the bundle. This way you can simply **require** all of your **JSX** components.
 
-**index.js**
 
-Copy and paste this code into your file
+Now copy and paste this code into your a file names **index.js**
 
 ```javascript
 
@@ -298,7 +295,7 @@ Well one of those new features in JS6 is **import**. Both instructions are telli
 
 Moving forward. Lets close this introduction to react by creating a couple of JSX components we can use with **ReactDOM.render**
 
-**YourFather**
+**index.js**
 ```javascript
 
 //var React = require('react');
@@ -482,5 +479,15 @@ Look at this HTML
 React is trying to affect the DOM as little as possible. So, no. It changes only the properties that need to be updated. 
 
 ##Where's My Money? - A web app to track your expenses
+
+So far so good. To this point all the code created for our first demo app is available in the [YourFatherTest](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS/YourFatherTest) directory within this repository. 
+
+Now lets build a small application to keep track of where our money goes.
+
+The purpose of this app is quite simple: **Register categorized expenses by date**.
+
+I want to be able to know exactly how much money I am spending, when, where and why. 
+
+I have created the empty directory MyMoney and ran the `$ npm init` command to configure the package and ran the whole set up the environment. 
 
 ##Retriving Data from the Server
