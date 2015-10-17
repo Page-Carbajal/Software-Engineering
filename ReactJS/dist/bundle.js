@@ -71,10 +71,11 @@
 	var CustomYourFather = (function (_React$Component) {
 	    _inherits(CustomYourFather, _React$Component);
 
-	    function CustomYourFather() {
+	    function CustomYourFather(props) {
 	        _classCallCheck(this, CustomYourFather);
 
-	        _get(Object.getPrototypeOf(CustomYourFather.prototype), 'constructor', this).apply(this, arguments);
+	        _get(Object.getPrototypeOf(CustomYourFather.prototype), 'constructor', this).call(this, props);
+	        this.state = { name: 'John Connor' };
 	    }
 
 	    _createClass(CustomYourFather, [{
@@ -82,11 +83,45 @@
 	        value: function render() {
 	            //return React.DOM.h1(null, this.props.name + ', I am your father!' )
 	            return React.createElement(
-	                'h1',
+	                'div',
 	                null,
-	                this.props.name,
-	                ', I\'m your father!'
+	                React.createElement(
+	                    'h1',
+	                    null,
+	                    'Hello ',
+	                    this.state.name
+	                ),
+	                React.createElement(
+	                    'h2',
+	                    null,
+	                    this.state.name,
+	                    ', I\'m your father!'
+	                ),
+	                React.createElement('input', { type: 'text', ref: 'name' }),
+	                React.createElement('input', { type: 'button', value: 'Update state', onClick: this.updateMessage.bind(this) })
 	            );
+	        }
+	    }, {
+	        key: 'updateMessage',
+	        value: function updateMessage() {
+	            this.setState({ name: this.refs.name.value });
+	        }
+	    }, {
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log('Before mounting!');
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('After mounting!');
+	        }
+	    }, {
+	        key: 'shouldComponentMount',
+	        value: function shouldComponentMount(nextProps, nextState) {
+	            var reRndr = nextState.name != this.state.name;
+	            console.log('Should Re-render: ', reRndr);
+	            return reRndr;
 	        }
 	    }]);
 

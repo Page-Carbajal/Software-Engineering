@@ -368,6 +368,118 @@ The **CustomYourFather** component uses the property **name** to render the mess
 
 ##VirtualDOM and Data Binding
 
+What is VirtualDOM? Making changes to the DOM is quite expensive. Before doing so, react evaluates the VirtualDOM to make sure only the changes needed are applied. 
+
+###The Binded I'm your father message
+
+We are going to bind our component to the state, so that when the state changes, the components are re-rendered. 
+
+if you are coding along. Replace your current **index.js** with this code
+```javascript
+
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+
+class CustomYourFather extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state = {name: 'John Connor'}
+    }
+
+    render()
+    {
+        //return React.DOM.h1(null, this.props.name + ', I am your father!' )
+        return(
+            <div>
+                <h1>{this.state.name}, I'm your father!</h1>
+                <input type="text" ref='name' />
+                <input type="button" value="Update state" onClick={this.updateMessage.bind(this)} />
+            </div>
+        );
+    }
+
+    updateMessage()
+    {
+        this.setState({ name: this.refs.name.value });
+    }
+
+    componentWillMount()
+    {
+        console.log('Before mounting!');
+    }
+
+    componentDidMount()
+    {
+        console.log('After mounting!');
+    }
+    
+    shouldComponentMount(nextProps, nextState)
+    {
+        var reRndr = nextState.name != this.state.name;
+        console.log('Should Re-render: ', reRndr);
+        return reRndr;
+    }
+
+}
+
+class YourFather extends React.Component
+{
+    render()
+    {
+        return React.createElement('h1', null, 'Luk, I am your father!' )
+    }
+}
+
+ReactDOM.render( <CustomYourFather name="John Connor" />, document.getElementById('example') );
+
+```
+
+###Changes introduced 
+
+0. The constructor
+1. componentWillMount()
+2. componentDidMount()
+3. shouldComponentUpdate()
+4. Data binding wit ref and onClick
+
+This functions are defined by the **React.Component** class and extended by our own components to add interaction with the state. 
+
+Before we explain what the code does. Just run the `$ webpack` command from within your root directory and test it out in index.html
+
+This code introduces you to the concept of **state**. React manages a state so it can update all the components on change. Those 4 functions we have introduced to the code you can understand simply by their names what they do. 
+ 
+####The constructor
+Well that works in the same way as you would expect. 
+
+####componentWillMount and componentDidMount
+This two function are in place to add interactivity to the components.
+
+###shouldComponentUpdate
+This function returns a bool. If ***true*** it re-renders the component.
+ 
+In this case we are comparing the nextState to the current state of the property name. If it doesn't change, we donnot render. 
+
+####ref and onClick
+
+**ref** is a react property. It indicates which **property** is binded to **which** control.
+
+In Angular we experienced auto data binding. When the text boxed changed so did the spans. Here the textbox is not fully data binded. So we use the button to set the state of the property to the new value in the textbox. 
+
+So. Is React re rendering the whole element or what?
+
+Look at this HTML
+```html
+<div data-reactid=".0">
+    <h1 data-reactid=".0.0"><span data-reactid=".0.0.0">Hello </span><span data-reactid=".0.0.1">Luk</span></h1>
+    <h2 data-reactid=".0.1"><span data-reactid=".0.1.0">Luk</span><span data-reactid=".0.1.1">, I'm your father!</span></h2>
+    <input type="text" data-reactid=".0.2"><input type="button" value="Update state" data-reactid=".0.3">
+</div>
+```
+
+React is trying to affect the DOM as little as possible. So, no. It changes only the properties that need updating. 
+
 ##Where's My Money? - A web app to track your expenses
 
 ##Retriving Data from the Server

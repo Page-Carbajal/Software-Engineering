@@ -5,11 +5,47 @@ import ReactDOM from 'react-dom';
 
 class CustomYourFather extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state = {name: 'John Connor'}
+    }
+
     render()
     {
         //return React.DOM.h1(null, this.props.name + ', I am your father!' )
-        return <h1>{this.props.name}, I'm your father!</h1>
+        return(
+            <div>
+                <h1>Hello {this.state.name}</h1>
+                <h2>{this.state.name}, I'm your father!</h2>
+                <input type="text" ref='name' />
+                <input type="button" value="Update state" onClick={this.updateMessage.bind(this)} />
+            </div>
+        );
     }
+
+    updateMessage()
+    {
+        this.setState({ name: this.refs.name.value });
+    }
+
+    componentWillMount()
+    {
+        console.log('Before mounting!');
+    }
+
+    componentDidMount()
+    {
+        console.log('After mounting!');
+    }
+
+    shouldComponentMount(nextProps, nextState)
+    {
+        var reRndr = nextState.name != this.state.name;
+        console.log('Should Re-render: ', reRndr);
+        return reRndr;
+    }
+
 }
 
 class YourFather extends React.Component
@@ -20,10 +56,4 @@ class YourFather extends React.Component
     }
 }
 
-ReactDOM.render(
-
-    <CustomYourFather name="John Connor" />,
-
-    document.getElementById('example')
-
-);
+ReactDOM.render( <CustomYourFather name="John Connor" />, document.getElementById('example') );
