@@ -262,7 +262,7 @@ var reactDOM = require('react-dom');
 
 reactDOM.render(
 
-    <h1>Luk, I'm your fater!</h1>,
+    <h1>Luk, I am your father!</h1>,
 
     document.getElementById('example')
 
@@ -270,24 +270,7 @@ reactDOM.render(
 
 ```
 
-This JSX component. Receives 2 parameters. The HTML to be rendered and the **target** element. To append the HTML to.
-
-Next step. Add this code to index.js
-
-```javascript
-
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-ReactDOM.render(
-
-    <h1>Luk, I'm your father!</h1>,
-
-    document.getElementById('example')
-
-);
-
-```
+This JSX component. Receives 2 parameters. (1) The HTML to be rendered and (2) the **target** element. To append the HTML to.
 
 Least but not last. Run the `$ webpack ` command from withing your project. The new bundle.js file will be created and you will see its size is around 600kb. Do not worry about that now. Just open the **index.html** file on your browser of choice. 
 
