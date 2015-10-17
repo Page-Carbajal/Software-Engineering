@@ -488,6 +488,70 @@ The purpose of this app is quite simple: **Register categorized expenses by date
 
 I want to be able to know exactly how much money I am spending, when, where and why. 
 
-I have created the empty directory MyMoney and ran the `$ npm init` command to configure the package and ran the whole set up the environment. 
+I have created the empty directory MyMoney and ran the `$ npm init` command to configure the package and ran the whole [set up the environment](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS#setting-up-an-environment) process. 
+
+Now let us create a small subset of components and files. 
+
+Instead of having all of our components in a single file as we did in the introduction. We will make use of the directory structure. 
+
+Replace the contents of your **index.html** file with this code.
+```html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Where is My Money?</title>
+</head>
+<body>
+
+<div class="documentWrapper" id="documentWrapper">
+
+</div>
+
+<script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+</html>
+
+```
+
+Create a new **root/lib/app.js** file with this code. 
+```javascript
+
+import React from 'react';
+
+class App extends React.Component
+{
+    render()
+    {
+        return <h1>Where's My Money?</h1>;
+    }
+}
+
+export default App;
+
+```
+
+Copy and paste this code into your **main.js** file
+```javascript
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './lib/app.js';
+
+ReactDOM.render(
+    <App />,
+    React.getElementById('documentWrapper')
+);
+
+```
+
+Run the webpack command to generate the bundle file. Open the index on your browser. 
+
+Now you know how to use import with other files. 
+
+###The Design of the app
+
+TBD
+
 
 ##Retriving Data from the Server
