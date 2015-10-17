@@ -465,7 +465,8 @@ In this case we are comparing the nextState to the current state of the property
 
 **ref** is a react property. It indicates which **property** is binded to **which** control.
 
-In Angular we experienced auto data binding. When the text boxed changed so did the spans. Here the textbox is not fully data binded. So we use the button to set the state of the property to the new value in the textbox. 
+In Angular we experienced auto data binding. When the textbox changed, so did the spans. 
+Here the textbox is not fully data binded. We use the button to set the state of the property to the new value in the textbox, and trigger the component rendering process
 
 So. Is React re rendering the whole element or what?
 
@@ -478,7 +479,7 @@ Look at this HTML
 </div>
 ```
 
-React is trying to affect the DOM as little as possible. So, no. It changes only the properties that need updating. 
+React is trying to affect the DOM as little as possible. So, no. It changes only the properties that need to be updated. 
 
 ##Where's My Money? - A web app to track your expenses
 
