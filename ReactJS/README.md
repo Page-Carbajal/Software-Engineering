@@ -523,7 +523,7 @@ class App extends React.Component
 {
     render()
     {
-        return <h1>Where's My Money?</h1>;
+        return <h1>Where is My Money?</h1>;
     }
 }
 
