@@ -25,7 +25,9 @@ Before you start you'll need to install **npm** if you don't have it already.
 2. Install babel and webpack
 3. Install react and react-dom
 4. Review our folder structure
-
+5. Setting up webpack.config.js
+6. Build bundle.js
+7. First ReactJS sample
 
 
 ####1. Create test-reactjs project
@@ -103,3 +105,117 @@ After this process your **package.json** file should look like this.
 
 ####4. Review our folder structure
 
+So far we have added a bunch of code to the project, and yet we have nothing to show for. Hang in there. This process is about setting up the environment for doing that. 
+
+**File structure**
+
+- <root>/**entry**.js
+- <root>/package.json
+- <root>/webpack.config.js
+- <root>/README.md
+- <root>/lib
+    - <root>/lib/source.js
+- <root>/dist
+    - <root>/dist/bundle.js
+- <root>/node_modules
+
+The **lib** directory is where we store our source code. In this folder you will find all of our JSX and other javascript files.
+
+The **dist** directory is where our source is compiled and then packaged to good old **Javascript**
+
+The **entry.js** file is the file specified in our package.json file. In this case, index.js.
+
+Lets run this command on the terminal **$ echo "console.log('Luk. I\'m your father');" > index.js**. This should create an index.js file that logs "Luk, I'm your father!" to console. 
+
+Don't believe me just watch. Run the command **$ node index.js** from the terminal.    
+
+####5. Setting up webpack.config.js
+
+The file webpack.config.js will be used to indicate webpack with modules need compiling and packaging. 
+
+Create a new **webpackconfig.js** file on the root of your project and type the following
+ 
+```javascript
+
+module.exports = {
+    entry: "./index.js",
+    output: {
+        path: __dirname + "/dist",
+        filename: "bundle.js"
+    },
+    module: {
+        loaders: []
+    }
+};
+
+```
+
+####6. Build bundle.js
+
+In a traditional web environment you would traditionally try to include the a number of **.js** files. 
+
+This is not what we are doing here. We are building a bundle. A bundle will package all of your javascript in a single file. In our case is called **bundle.js**
+
+Run the command `bash webpack ` from the terminal. A new file called **bundle.js** is created on the **dist** folder. 
+
+It should look something like this. 
+
+```javascript
+
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
+
+	console.log('Luk. I\'m your father');
+
+
+/***/ }
+/******/ ]);
+
+```
+
+Test it out again. Run the command `bash node ./dist/bundle.js `. 
+
+####7. First ReactJS sample
