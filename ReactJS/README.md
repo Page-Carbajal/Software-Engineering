@@ -272,7 +272,7 @@ reactDOM.render(
 
 This JSX component. Receives 2 parameters. (1) The HTML to be rendered and (2) the **target** element. To append the HTML to.
 
-Least but not last. Run the `sh webpack ` command from withing your project. The new bundle.js file will be created and you will see its size is around 600kb. Do not worry about that now. Just open the **index.html** file on your browser of choice. 
+Least but not last. Run the `language-sh webpack ` command from withing your project. The new bundle.js file will be created and you will see its size is around 600kb. Do not worry about that now. Just open the **index.html** file on your browser of choice. 
 
 Voila, you are now officially using react. Good Job!
 
