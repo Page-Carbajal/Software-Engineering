@@ -34,7 +34,7 @@ Before you start you'll need to install **npm** if you don't have it already.
 
 Kickstart this project by running the command 
 
-**npm init** on a folder named **test-reactjs**, or any other name you like.
+`npm init` on a folder named **test-reactjs**, or any other name you like.
 
 Complete the process to create the project. **NPM** will then build an empty **package.json** file on the folder just like this.
 
@@ -56,9 +56,9 @@ Complete the process to create the project. **NPM** will then build an empty **p
 
 ####2. Install babel and webpack
 
-1. Install **babel** running the command **npm install babel -g**
-2. Install **webpack** globally by running the command **npm install webpack -g**. 
-3. Add **webpack** to your project with the command **npm install webpack --save-dev**
+1. Install **babel** running the command `$ npm install babel -g`
+2. Install **webpack** globally by running the command `$ npm install webpack -g` 
+3. Add **webpack** to your project with the command `$ npm install webpack --save-dev`
 
 Your **package.json** file should look like this now.
 ```javascript
@@ -125,9 +125,9 @@ The **dist** directory is where our source is compiled and then packaged to good
 
 The **entry.js** file is the file specified in our package.json file. In this case, index.js.
 
-Lets run this command on the terminal **$ echo "console.log('Luk. I\'m your father');" > index.js**. This should create an index.js file that logs "Luk, I'm your father!" to console. 
+Lets run this command on the terminal `$ echo "console.log('Luk. I\'m your father');" > index.js`. This should create an index.js file that logs "Luk, I'm your father!" to console. 
 
-Don't believe me just watch. Run the command **$ node index.js** from the terminal.    
+Don't believe me just watch. Run the command `$ node index.js` from the terminal.    
 
 ####5. Setting up webpack.config.js
 
@@ -216,6 +216,6 @@ It should look something like this.
 
 ```
 
-Test it out again. Run the command `bash node ./dist/bundle.js `. 
+Test it out again. Run the command `$ node ./dist/bundle.js`. 
 
 ####7. First ReactJS sample
