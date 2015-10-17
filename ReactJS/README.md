@@ -276,6 +276,94 @@ Least but not last. Run the `$ webpack ` command from withing your project. The 
 
 Voila, you are now officially using react. Good Job!
 
+###EcmaScript 6 - A taste
+
+EcmaScript is the future of Javascript. The new release of javascript dramatically improves the language by adding killer features. Link to the [New Features in EcmaScript6](https://github.com/lukehoban/es6features).
+ 
+Since this work is all about learning new things. Lets dump the requires in our **index.js** file and instead let us try **import**
+```javascript
+
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+
+// The rest of the code...
+
+```
+
+What did we do here?. Well one of those new features in JS6 is import. Both instructions are telling Javascript to import the modules into a variable. You can skip the variable part if you want, or even import only a subset of function directly into your class. However we are not doing that here yet.
+
+Moving forward. Lets close this introduction to react by creating a couple of JSX components we can use with **ReactDOM.render**
+
+**YourFather**
+```javascript
+
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+
+class CustomYourFather extends React.Component
+{
+    render()
+    {
+        return React.DOM.h1(null, this.props.name + ', I am your father!' )
+    }
+}
+
+ReactDOM.render(
+
+    <YourFather />,
+
+    document.getElementById('example')
+
+);
+
+```
+
+Classes ahhh, that is pretty. What our YourFather Class does is very simple. We are creating a JSX component by extending **React.Component** and then implementing the function **render()**. Once the component is created we call it from ReactDOM like the example above. 
+
+The **React.DOM()** function gets 3 parameters. (1) Element type, (2) Properties and (3) The content of the element. While the **React.DOM.h1()** function gets onlye the last 2 parameters. 
+ 
+Lets build another component
+```javascript
+
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+
+class CustomYourFather extends React.Component
+{
+    render()
+    {
+        return React.DOM.h1(null, this.props.name + ', I am your father!' )
+    }
+}
+
+class YourFather extends React.Component
+{
+    render()
+    {
+        return React.createElement('h1', null, 'Luk, I am your father!' )
+    }
+}
+
+ReactDOM.render(
+
+    <CustomYourFather name="John Connor" />,
+
+    document.getElementById('example')
+
+);
+
+```
+
+The **CustomYourFather** component uses the property **name** to render the message "John Connor, I am your father!". Pretty straight forward.
+
+
+
 ##VirtualDOM and Data Binding
 
 ##Where's My Money? - A web app to track your expenses
