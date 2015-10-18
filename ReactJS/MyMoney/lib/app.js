@@ -1,10 +1,16 @@
 import React from 'react';
+import MainNavigation from './components/MainNavigation.js'
 
 class App extends React.Component
 {
     render()
     {
-        return <h1>Where's My Money?</h1>;
+        return (
+            <section className="reactApp">
+                <MainNavigation />
+                <h1>Where is my money?</h1>
+            </section>
+        );
     }
 }
 

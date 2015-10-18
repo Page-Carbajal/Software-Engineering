@@ -4,5 +4,5 @@ import App from './lib/app.js';
 
 ReactDOM.render(
     <App />,
-    React.getElementById('documentWrapper')
+    document.getElementById('appWrapper')
 );

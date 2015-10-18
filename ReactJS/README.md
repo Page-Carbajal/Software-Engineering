@@ -551,7 +551,178 @@ Now you know how to use import with other files.
 
 ###The Design of the app
 
-TBD
+
+This is a Single Page Application that should look like this when finished. 
+
+TODO: Insert Finished image here
+
+We are going to be using a Bootstrap for the overall look and feel. There's a nifty website called [Layoutit](http://layouitit.com). Its a Drag-And-Drop Bootstrap-Layout generator. This layout was partially generated there.
+
+Our application will be segmented as follows
+
+1. Navigation
+    - Title
+    - Menu
+2. Content
+    - Add Expense Section
+    - Last Expenses Section
+    - Expenses Categories Section
+
+I do not know about you but I have to register every single expense as it happens. Other wise I end up asking my self **where in hell is my money?**.
+
+Replace the contents of you **index.html** file with the following code. 
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Where's My Money?</title>
+    <meta name="generator" content="http://layoutit.com">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="appWrapper"></div>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- TODO: Require this dependencies with a vendors webpack config -->
+<script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+</html>
+
+```
+
+As we previously stated this app uses **bootstrap**, you can see 3 external files being requested from CDNs: jQuery, Bootstrap.css and Bootstrap.js.
+
+We could of course package those files with **webpack** but that is not the purpose of this chapter. For now don't let it bug you too much!
+
+**Why o why is the HTML so skinny?**
+
+Simple answer. All HTML will be generated with the app components.
+
+####Section 1 - Navigation
+
+We need a component that can provide the following HTML
+```html
+
+<div className="row">
+    <div className="col-md-12">
+        <nav className="navbar navbar-default" role="navigation" id="mainNavigation">
+            <div className="navbar-header">
+                <h3>Where's My Money?</h3>
+                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span>
+                </button>
+            </div>
+
+            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul className="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">View All Expenses</a>
+                    </li>
+                    <li>
+                        <a href="#">Montly Expense Overview</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+```
+
+At first sight seems straight forward HTML code. However, you have to notice the use of the property **className** instead of the word **class** which is reserved in JSX. 
+
+Lets build our MainNavigation component. Create a new **root/lib/components/MainNavigation.js** with the following code.
+```javascript
+
+import React from 'react';
+
+class MainNavigation extends React.Component
+{
+    render()
+    {
+        return(
+            <div className="row">
+                <div className="col-md-12">
+                    <nav className="navbar navbar-default" role="navigation" id="mainNavigation">
+                        <div className="navbar-header">
+                            <h3>Where's My Money?</h3>
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul className="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">View All Expenses</a>
+                                </li>
+                                <li>
+                                    <a href="#">Montly Expense Overview</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default MainNavigation;
+
+```
+
+The previous code imports React and then creates the **MainNavigation** component, which, as previously explained, is extending **React.Component** to render some HTML.
+
+***From hereon:*** In the following components I will present you the finalized JSX file and explain what it does. 
+
+Cool, you have a new navigation component. Time to integrate it on our application. 
+
+Edit your **app.js** file to make it look like this
+```javascript
+
+import React from 'react';
+import MainNavigation from './components/MainNavigation.js'
+
+class App extends React.Component
+{
+    render()
+    {
+        return (
+            <section className="reactApp">
+                <MainNavigation />
+                <h1>Where is my money?</h1>
+            </section>
+        );
+    }
+}
+
+export default App;
+
+```
+ 
+And your **main.js** file to look like this
+```javascript
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './lib/app.js';
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('appWrapper')
+);
+
+```
+
+The tag `html <MainNavigation />` executed within the **App** component will instantiate and render our **MainNavigation** component.
+
+The **app** JSX component build the whole app from the ground up. The single responsibility of our **main.js** is to render it.  
 
 
 ##Retriving Data from the Server
