@@ -1,5 +1,6 @@
 import React from 'react';
-import MainNavigation from './components/MainNavigation.js'
+import MainNavigation from './components/MainNavigation.js';
+import AddExpense from './components/AddExpense.js';
 
 class App extends React.Component
 {
@@ -8,7 +9,13 @@ class App extends React.Component
         return (
             <section className="reactApp">
                 <MainNavigation />
-                <h1>Where is my money?</h1>
+                <div className="row">
+                    <div className="col-md-12 text-center">
+                        <h1>Where is my money?</h1>
+                        <hr />
+                    </div>
+                </div>
+                <AddExpense />
             </section>
         );
     }

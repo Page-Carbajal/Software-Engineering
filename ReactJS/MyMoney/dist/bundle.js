@@ -19637,6 +19637,10 @@
 
 	var _componentsMainNavigationJs2 = _interopRequireDefault(_componentsMainNavigationJs);
 
+	var _componentsAddExpenseJs = __webpack_require__(160);
+
+	var _componentsAddExpenseJs2 = _interopRequireDefault(_componentsAddExpenseJs);
+
 	var App = (function (_React$Component) {
 	    _inherits(App, _React$Component);
 
@@ -19654,10 +19658,20 @@
 	                { className: 'reactApp' },
 	                _react2['default'].createElement(_componentsMainNavigationJs2['default'], null),
 	                _react2['default'].createElement(
-	                    'h1',
-	                    null,
-	                    'Where is my money?'
-	                )
+	                    'div',
+	                    { className: 'row' },
+	                    _react2['default'].createElement(
+	                        'div',
+	                        { className: 'col-md-12 text-center' },
+	                        _react2['default'].createElement(
+	                            'h1',
+	                            null,
+	                            'Where is my money?'
+	                        ),
+	                        _react2['default'].createElement('hr', null)
+	                    )
+	                ),
+	                _react2['default'].createElement(_componentsAddExpenseJs2['default'], null)
 	            );
 	        }
 	    }]);
@@ -19770,6 +19784,116 @@
 	})(_react2["default"].Component);
 
 	exports["default"] = MainNavigation;
+	module.exports = exports["default"];
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var AddExpense = (function (_React$Component) {
+	    _inherits(AddExpense, _React$Component);
+
+	    function AddExpense() {
+	        _classCallCheck(this, AddExpense);
+
+	        _get(Object.getPrototypeOf(AddExpense.prototype), "constructor", this).apply(this, arguments);
+	    }
+
+	    _createClass(AddExpense, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2["default"].createElement(
+	                "div",
+	                { className: "row" },
+	                _react2["default"].createElement(
+	                    "div",
+	                    { className: "col-md-8 col-md-offset-2" },
+	                    _react2["default"].createElement(
+	                        "h3",
+	                        null,
+	                        "New Expense"
+	                    ),
+	                    _react2["default"].createElement(
+	                        "form",
+	                        { role: "form" },
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "form-group" },
+	                            _react2["default"].createElement(
+	                                "label",
+	                                { "for": "name" },
+	                                "Expense"
+	                            ),
+	                            _react2["default"].createElement("input", { type: "text", className: "form-control", id: "name", name: "name", ref: "name" })
+	                        ),
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "form-group" },
+	                            _react2["default"].createElement(
+	                                "label",
+	                                { "for": "date" },
+	                                "Date"
+	                            ),
+	                            _react2["default"].createElement("input", { type: "text", className: "form-control", id: "date", name: "date", ref: "date" })
+	                        ),
+	                        _react2["default"].createElement(
+	                            "div",
+	                            { className: "form-group" },
+	                            _react2["default"].createElement(
+	                                "label",
+	                                { "for": "name" },
+	                                "Category"
+	                            ),
+	                            _react2["default"].createElement(
+	                                "select",
+	                                { id: "category", name: "category", ref: "category", className: "form-control" },
+	                                _react2["default"].createElement(
+	                                    "option",
+	                                    null,
+	                                    "Transportation"
+	                                ),
+	                                _react2["default"].createElement(
+	                                    "option",
+	                                    null,
+	                                    "Food"
+	                                ),
+	                                _react2["default"].createElement(
+	                                    "option",
+	                                    null,
+	                                    "Entertainment"
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AddExpense;
+	})(_react2["default"].Component);
+
+	exports["default"] = AddExpense;
 	module.exports = exports["default"];
 
 /***/ }

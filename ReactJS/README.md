@@ -584,7 +584,7 @@ Replace the contents of you **index.html** file with the following code.
 </head>
 <body>
 
-<div id="appWrapper"></div>
+<div id="appWrapper" class="container-fluid"></div>
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -681,7 +681,7 @@ The previous code imports React and then creates the **MainNavigation** componen
 
 ***From hereon:*** In the following components I will present you the finalized JSX file and explain what it does. 
 
-Cool, you have a new navigation component. Time to integrate it on our application. 
+**Cool!** You have a new navigation component. Time to integrate it on our application. 
 
 Edit your **app.js** file to make it look like this
 ```javascript
@@ -720,9 +720,82 @@ ReactDOM.render(
 
 ```
 
-The tag `html <MainNavigation />` executed within the **App** component will instantiate and render our **MainNavigation** component.
+The tag **<MainNavigation />** executed within the **App** component will instantiate and render our **MainNavigation** component.
 
 The **app** JSX component build the whole app from the ground up. The single responsibility of our **main.js** is to render it.  
+
+Navigation does nothing right now. But for now I'm ok with that. Lets take care of more relevant stuff.
+  
+####Section 2 - Content
+
+For the content section we will create 3 components
+
+1. AddExpense.js
+2. ShowLists
+    - ExpenseCategories.js
+    - LatestExpenses.js
+    - A child component called CountList.js
+
+
+**AddExpense.js**
+```javascript
+
+import React from 'react'
+
+class AddExpense extends React.Component
+{
+    render()
+    {
+        return(
+            <div className="row">
+                <div className="col-md-8 col-md-offset-2">
+                    <h3>New Expense</h3>
+                    <form role="form">
+                        <div className="form-group">
+                            <label for="name">Expense</label>
+                            <input type="text" className="form-control" id="name" name="name" ref="name" />
+                        </div>
+                        <div className="form-group">
+                            <label for="date">Date</label>
+                            <input type="text" className="form-control" id="date" name="date" ref="date" />
+                        </div>
+                        <div className="form-group">
+                            <label for="name">Category</label>
+                            <select id="category" name="category" ref="category" className="form-control">
+                                <option>Transportation</option>
+                                <option>Food</option>
+                                <option>Entertainment</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div> );
+    }
+}
+
+export default AddExpense;
+
+```
+
+The **AddExpense** component executes the following tasks. 
+
+0. Validate the date and name
+1. Invoke a promise to register the expense
+    - On return the promise will notify the state of the change in the DB
+3. Clean the textbox
+4. Notify the user 
+
+But before we do the significant code, we are going to lay the foundations for the other components.
+
+**CountList**
+```javascript
+
+```
+
+And **ShowLists.js**
+```javascript
+
+```
 
 
 ##Retriving Data from the Server
