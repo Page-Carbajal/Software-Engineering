@@ -625,15 +625,15 @@
 	   * Updates a component's children by processing a series of updates. The
 	   * update configurations are each expected to have a `parentNode` property.
 	   *
-	   * @param {array<object>} updates List of update configurations.
-	   * @param {array<string>} markupList List of markup strings.
+	   * @param {array<object>} updates EnumeratedList of update configurations.
+	   * @param {array<string>} markupList EnumeratedList of markup strings.
 	   * @internal
 	   */
 	  processUpdates: function (updates, markupList) {
 	    var update;
 	    // Mapping from parent IDs to initial child orderings.
 	    var initialChildren = null;
-	    // List of children that will be moved or removed.
+	    // EnumeratedList of children that will be moved or removed.
 	    var updatedChildren = null;
 
 	    for (var i = 0; i < updates.length; i++) {
@@ -750,8 +750,8 @@
 	   * into a list of root nodes. Also, the length of `resultList` and
 	   * `markupList` should be the same.
 	   *
-	   * @param {array<string>} markupList List of markup strings to render.
-	   * @return {array<DOMElement>} List of rendered nodes.
+	   * @param {array<string>} markupList EnumeratedList of markup strings to render.
+	   * @return {array<DOMElement>} EnumeratedList of rendered nodes.
 	   * @internal
 	   */
 	  dangerouslyRenderMarkup: function (markupList) {
@@ -2401,8 +2401,8 @@
 	  /**
 	   * Updates a component's children by processing a series of updates.
 	   *
-	   * @param {array<object>} updates List of update configurations.
-	   * @param {array<string>} markup List of markup strings.
+	   * @param {array<object>} updates EnumeratedList of update configurations.
+	   * @param {array<string>} markup EnumeratedList of markup strings.
 	   * @internal
 	   */
 	  dangerouslyProcessChildrenUpdates: function (updates, markup) {
@@ -16250,7 +16250,7 @@
 	   * @see Transaction
 	   * @abstract
 	   * @final
-	   * @return {array<object>} List of operation wrap procedures.
+	   * @return {array<object>} EnumeratedList of operation wrap procedures.
 	   *   TODO: convert to array<TransactionWrapper>
 	   */
 	  getTransactionWrappers: function () {

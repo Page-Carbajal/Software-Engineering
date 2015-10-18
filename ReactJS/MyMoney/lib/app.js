@@ -1,6 +1,7 @@
 import React from 'react';
 import MainNavigation from './components/MainNavigation.js';
 import AddExpense from './components/AddExpense.js';
+import ExpenseLists from './components/ExpenseLists.js';
 
 class App extends React.Component
 {
@@ -16,6 +17,7 @@ class App extends React.Component
                     </div>
                 </div>
                 <AddExpense />
+                <ExpenseLists />
             </section>
         );
     }

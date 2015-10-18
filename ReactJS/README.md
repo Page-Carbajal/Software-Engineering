@@ -731,10 +731,10 @@ Navigation does nothing right now. But for now I'm ok with that. Lets take care 
 For the content section we will create 3 components
 
 1. AddExpense.js
-2. ShowLists
+2. ExpenseLists.js
     - ExpenseCategories.js
     - LatestExpenses.js
-    - A child component called CountList.js
+    - A child component called EnumeratedList.js
 
 
 **AddExpense.js**
@@ -787,13 +787,64 @@ The **AddExpense** component executes the following tasks.
 
 But before we do the significant code, we are going to lay the foundations for the other components.
 
-**CountList**
+**EnumeratedList**
 ```javascript
+
+import React from 'react';
+
+class EnumeratedList extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+    }
+
+    render()
+    {
+        return(
+            <div className="list-group">
+                <div className="list-group-item active">
+                    <h4 className="list-group-item-heading">
+                        {this.props.listTitle}
+                    </h4>
+                </div>
+                <div className="list-group-item">
+                    <span className="badge">14</span>Category Name
+                </div>
+            </div>
+        );
+    }
+
+}
+
+export default EnumeratedList;
 
 ```
 
-And **ShowLists.js**
+And **ExpenseLists.js**
 ```javascript
+
+import React from 'react';
+import EnumeratedList from './EnumeratedList.js';
+
+class ExpenseLists extends React.Component
+{
+    render()
+    {
+        return(
+            <div className="row">
+                <div className="col-md-4 col-md-offset-2">
+                    <EnumeratedList listTitle="Latest Expenses" />
+                </div>
+                <div className="col-md-4">
+                    <EnumeratedList listTitle="Expense Categories" />
+                </div>
+            </div>
+        );
+    }
+}
+
+export default ExpenseLists;
 
 ```
 
