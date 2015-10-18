@@ -554,7 +554,7 @@ Now you know how to use import with other files.
 
 This is a Single Page Application that should look like this when finished. 
 
-TODO: Insert Finished image here
+![alt text](https://raw.githubusercontent.com/Page-Carbajal/Software-Engineering/master/ReactJS/MyMoney/screenshot.png "My Money App Screenshot")
 
 We are going to be using a Bootstrap for the overall look and feel. There's a nifty website called [Layoutit](http://layouitit.com). Its a Drag-And-Drop Bootstrap-Layout generator. This layout was partially generated there.
 
