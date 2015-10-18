@@ -779,11 +779,11 @@ export default AddExpense;
 
 The **AddExpense** component executes the following tasks. 
 
-0. Validate the date and name
-1. Invoke a promise to register the expense
-    - On return the promise will notify the state of the change in the DB
-3. Clean the textbox
-4. Notify the user 
+1. Validate the date and name
+2. Invoke a promise to register the expense
+    - Modify the state 
+    - If on return the expense was not registered update the state
+3. Display notifications to the user
 
 But before we do the significant code, we are going to lay the foundations for the other components.
 
@@ -847,6 +847,68 @@ class ExpenseLists extends React.Component
 export default ExpenseLists;
 
 ```
+**JSON is our friend**
+
+So far we have a set of components that do pretty much nothing but render HTML. Lets hook up some data and rock your world shall we.
+
+Add this code to the **ExpenseLists.js** file, just before the class declaration. 
+```javascript
+
+var categories = [
+    {name: "Transportation", count: 5, amount: 100},
+    {name: "Food", count: 20, amount: 150},
+    {name: "Entertainment", count: 2, amount: 80}
+];
+
+var latest = [
+    {name: "Subway", count: 1, amount: 10},
+    {name: "Movies", count: 1, amount: 14},
+    {name: "Pizza", count: 1, amount: 7 }
+];
+
+```
+
+Yes, we are going to use these variables as data source for our lists.
+
+Next, modify your **EnumeratedList.js** file so it looks something like this
+```javascript
+
+import React from 'react';
+
+class EnumeratedList extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+    }
+
+    render()
+    {
+        return(
+            <div className="list-group">
+                <div className="list-group-item active">
+                    <h4 className="list-group-item-heading">
+                        {this.props.listTitle}
+                    </h4>
+                </div>
+                {this.props.source.map( function(item){
+                    return(
+                        <div className="list-group-item">
+                            <span className="badge">{item.count}</span>{item.name}
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
+
+}
+
+export default EnumeratedList;
+
+```
+
+Run the webpack command and open the index.html file to test it. 
 
 
 ##Retriving Data from the Server

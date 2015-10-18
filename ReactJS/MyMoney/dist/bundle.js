@@ -19929,6 +19929,10 @@
 
 	var _EnumeratedListJs2 = _interopRequireDefault(_EnumeratedListJs);
 
+	var categories = [{ name: "Transportation", count: 5, amount: 100 }, { name: "Food", count: 20, amount: 150 }, { name: "Entertainment", count: 2, amount: 80 }];
+
+	var latest = [{ name: "Subway", count: 1, amount: 10 }, { name: "Movies", count: 1, amount: 14 }, { name: "Pizza", count: 1, amount: 7 }];
+
 	var ExpenseLists = (function (_React$Component) {
 	    _inherits(ExpenseLists, _React$Component);
 
@@ -19956,12 +19960,12 @@
 	                _react2['default'].createElement(
 	                    'div',
 	                    { className: 'col-md-4 col-md-offset-2' },
-	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { listTitle: 'Latest Expenses' })
+	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { listTitle: 'Latest Expenses', source: latest, enumProperty: 'amount' })
 	                ),
 	                _react2['default'].createElement(
 	                    'div',
 	                    { className: 'col-md-4' },
-	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { listTitle: 'Expense Categories' })
+	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { listTitle: 'Expense Categories', source: categories })
 	                )
 	            );
 	        }
@@ -20004,6 +20008,9 @@
 	        _classCallCheck(this, EnumeratedList);
 
 	        _get(Object.getPrototypeOf(EnumeratedList.prototype), "constructor", this).call(this, props);
+	        //this.props.items = this.props.source.map(function(item){
+	        //    return ( <span className="badge">{item.count}</span>{item.name} );
+	        //});
 	    }
 
 	    _createClass(EnumeratedList, [{
@@ -20021,16 +20028,18 @@
 	                        this.props.listTitle
 	                    )
 	                ),
-	                _react2["default"].createElement(
-	                    "div",
-	                    { className: "list-group-item" },
-	                    _react2["default"].createElement(
-	                        "span",
-	                        { className: "badge" },
-	                        "14"
-	                    ),
-	                    "Category Name"
-	                )
+	                this.props.source.map(function (item) {
+	                    return _react2["default"].createElement(
+	                        "div",
+	                        { className: "list-group-item" },
+	                        _react2["default"].createElement(
+	                            "span",
+	                            { className: "badge" },
+	                            item.count
+	                        ),
+	                        item.name
+	                    );
+	                })
 	            );
 	        }
 	    }]);
