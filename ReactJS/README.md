@@ -612,7 +612,7 @@ We need a component that can provide the following HTML
     <div className="col-md-12">
         <nav className="navbar navbar-default" role="navigation" id="mainNavigation">
             <div className="navbar-header">
-                <h3>Where's My Money?</h3>
+                <h3>Where is My Money?</h3>
                 <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span>
                 </button>
@@ -650,7 +650,7 @@ class MainNavigation extends React.Component
                 <div className="col-md-12">
                     <nav className="navbar navbar-default" role="navigation" id="mainNavigation">
                         <div className="navbar-header">
-                            <h3>Where's My Money?</h3>
+                            <h3>Where is My Money?</h3>
                             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                                 <span className="sr-only">Toggle navigation</span><span className="icon-bar"></span><span className="icon-bar"></span><span className="icon-bar"></span>
                             </button>
