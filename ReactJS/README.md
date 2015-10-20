@@ -1175,3 +1175,15 @@ It pushes an update to the **latest** array and you should see it after the **up
 ####Congratulations
 
 You are now using **ReactJS** 
+
+##Where to From here?
+
+You now have a good understanding of how ReactJS works. Maybe, you are ready to try [Two-way binding](https://facebook.github.io/react/docs/two-way-binding-helpers.html). May be if you are felling sassy you can even buy the video [Mastering React JS](https://www.packtpub.com/web-development/mastering-reactjs-video). You can go to the official [React Documentation](https://facebook.github.io/react/docs/getting-started.html) 
+
+Also do not forget to visit the sites of our resources to learn more about them. 
+
+1. [Babel](http://babeljs.io)
+2. [Webpack](webpack.github.io)
+3. [Lodash](http://lodash.com)
+
+Thank you for reading. [Tweet me](https://twitter.com/iaaxpage) if you'll like to follow up on something
