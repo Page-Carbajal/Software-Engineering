@@ -19666,6 +19666,9 @@
 
 	            var latestExpense = { name: name, amount: parseFloat(amount), count: 1 };
 	            var latestCategory = { name: category, amount: parseFloat(amount), count: 1 };
+
+	            // TODO: Post data to server
+
 	            console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
 
 	            var valueAdded = false;
@@ -19685,6 +19688,24 @@
 	            latest.push(latestExpense);
 	            console.log('Updated expenses: ', latest);
 	            this.setState({ source: { categories: categories, latest: latest } });
+	        }
+	    }, {
+	        key: 'updateDataSource',
+	        value: function updateDataSource() {
+	            // TODO: Actually get data from server
+	            this.setState({ source: { categories: categories, latest: latest } });
+
+	            // This function will run every 2 seconds
+	            setTimeout((function () {
+	                this.updateDataSource();
+	            }).bind(this), 2000);
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            setTimeout((function () {
+	                this.updateDataSource();
+	            }).bind(this), 2000);
 	        }
 	    }, {
 	        key: 'render',
@@ -19862,14 +19883,6 @@
 
 	    _createClass(AddExpense, [{
 	        key: 'addExpenseClick',
-
-	        //constructor(props)
-	        //{
-	        //    super(props);
-	        //    console.log('This propos', props);
-	        //    //this.props = {name: '', date: '', amount: ''};
-	        //}
-
 	        value: function addExpenseClick(e) {
 	            e.preventDefault();
 
@@ -32471,32 +32484,6 @@
 	    }
 
 	    _createClass(EnumeratedList, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            console.log('Before mounting!');
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log('After mounting!');
-	            //setTimeout(function(){
-	            //    this.updateDataSource();
-	            //}.bind(this), 1500);
-	        }
-	    }, {
-	        key: 'updateDataSource',
-	        value: function updateDataSource() {
-	            // TODO: Actually build an API
-	            if (this.props.id == 'lastExpenses') {
-	                this.setState({ source: latest });
-	            } else {
-	                this.setState({ source: categories });
-	            }
-	            //setTimeout(function(){
-	            //    this.updateDataSource();
-	            //}.bind(this), 1500);
-	        }
-	    }, {
 	        key: 'shouldComponentMount',
 	        value: function shouldComponentMount(nextProps, nextState) {
 	            // If there are no items do not render
@@ -32521,11 +32508,11 @@
 	                        this.props.listTitle
 	                    )
 	                ),
-	                this.state.source.map((function (item) {
+	                this.state.source.map((function (item, key) {
 	                    if (this.props.enumProperty == null || this.props.enumProperty != 'count') {
 	                        return _react2['default'].createElement(
 	                            'div',
-	                            { className: 'list-group-item' },
+	                            { className: 'list-group-item', key: key },
 	                            _react2['default'].createElement(
 	                                'span',
 	                                { className: 'badge' },
@@ -32536,7 +32523,7 @@
 	                    } else {
 	                        return _react2['default'].createElement(
 	                            'div',
-	                            { className: 'list-group-item' },
+	                            { className: 'list-group-item', key: key },
 	                            _react2['default'].createElement(
 	                                'span',
 	                                { className: 'badge' },

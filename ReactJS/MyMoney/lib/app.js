@@ -21,6 +21,9 @@ class App extends React.Component
 
         var latestExpense = {name: name, amount: parseFloat(amount), count: 1};
         var latestCategory = {name: category, amount: parseFloat(amount), count: 1};
+
+        // TODO: Post data to server
+
         console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
 
         var valueAdded = false;
@@ -40,6 +43,25 @@ class App extends React.Component
         latest.push(latestExpense);
         console.log('Updated expenses: ', latest);
         this.setState({source: {categories: categories, latest: latest}});
+    }
+
+    updateDataSource()
+    {
+        // TODO: Actually get data from server
+        this.setState( {source: {categories: categories, latest: latest} });
+
+        // This function will run every 2 seconds
+        setTimeout(function(){
+            this.updateDataSource();
+        }.bind(this), 2000);
+
+    }
+
+    componentDidMount()
+    {
+        setTimeout(function(){
+            this.updateDataSource();
+        }.bind(this), 2000);
     }
 
     render()
