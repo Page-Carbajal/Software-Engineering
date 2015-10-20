@@ -1159,9 +1159,9 @@ Lets start simple. The constructor. In this function we are setting the initial 
 
 Now, when you click on the submit button of the form. The **AddExpense** component can call a parent function using the **onExpenseSubmit** property.
 
-The function **registerExpense** kind of validates the values are not empty, then creates a couple of objects. latestExpense and latestCategory. Once the components are created, the function uses **lodash** to iterate across the categories and add the values accordingly or pushes the new category to the **categories** array if that's the case. It also pushes the lastExpense to the **latest** array so they can be reflected on the state.
+The function **registerExpense** kind of validates the values are not empty, then creates a couple of objects. latestExpense and latestCategory. Once the objects are created, the function uses **lodash** to iterate across the categories to **add** the **count** and **amount** values accordingly. If there's no record of a corresponding group, the new category is pushed to the **categories** array. The function also pushes the lastExpense to the **latest** array so they can be reflected on the state.
   
-Once both the categories array and the latest array are updated, it *re-sets* the state. This event **triggers** a chain reaction that updates both lists.
+Once both arrays are updated, it *re-sets* the state. This event **triggers** a chain reaction that updates both lists.
  
 ####One more thing
 
