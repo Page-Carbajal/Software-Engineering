@@ -25,7 +25,7 @@ Once the completed this work will also be available in Spanish.
 2. Javascript
     - Frameworks
         - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/wiki/Learning-AngularJS---A-Review)
-        - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS)
+        - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/ReactJS)
     - Transpilers
         - Babel
         - TypeScript
