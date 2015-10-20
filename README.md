@@ -24,7 +24,7 @@ Once the completed this work will also be available in Spanish.
     - Magento (maybe)
 2. Javascript
     - Frameworks
-        - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/wiki/Learning-AngularJS---A-Review)
+        - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/AngularJS)
         - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/ReactJS)
     - Transpilers
         - Babel
