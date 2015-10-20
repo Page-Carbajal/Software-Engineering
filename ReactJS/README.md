@@ -4,18 +4,13 @@ What is ReactJS?
 
 Is a next generation Javascript library for building user interfaces.
 
-React introduces JSX so we can write reusable HTML components. This JSX is compiled into plain JS to be used by your app as needed 
-
-##Features
-
-- Virtual DOM
-
+React introduces **JSX** so we can write reusable HTML components. This **JSX** is compiled into plain Javascript so you can use it in your app. 
 
 ##Setting up an Environment
 
-In this chapter we will lear how to create a ReactJS environment using **npm**.
+In this chapter we will learn how to create a **ReactJS environment** using **npm**, [Webpack](http://webpack.github.io) and [Babel](https://babeljs.io).
  
-We will install [Webpack](http://webpack.github.io) and [Babel](https://babeljs.io). We'll talk about these in the future. For now, lets just say that we use **Webpack** to manage our dependencies and build our **bundle.js**. Babel is our transpiler, it transforms Ecma-Script 6 to Javascript 5.1, also compiles JSX to plain Javascript. 
+We'll talk about **webpack** and **babel** in the future. For now, lets just know we use **Webpack** to build our **bundle.js** file with all of our dependecies. Babel is our transpiler, it transforms **Ecma-Script 6** to Javascript, also compiles JSX to plain Javascript. 
      
 Before you start you'll need to install **npm** if you don't have it already.
 
