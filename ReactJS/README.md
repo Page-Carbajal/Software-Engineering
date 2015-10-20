@@ -881,11 +881,6 @@ import React from 'react';
 
 class EnumeratedList extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(
@@ -916,5 +911,272 @@ Run the webpack command and open the index.html file to test it.
 
 You can see the data displayed on the lists. But how?. The modification we made to the component uses the **map** function to dynamically generate the list items.
 
+###Finishing Touches
 
-##Retriving Data from the Server
+So far we have done some nice stuff of our little expenses app, but nothing significant yet. We have been using **props** to pass values to the controls and render on change. **ReactJS** says `render()` methods are written declaratively as functions of `this.props` and `this.state` -word for word-. This means every time you change the state or props of a control it wil **re-render**.
+
+To finish our **Where's My Money** example we will be working with the state and propos of some of our components. 
+
+We have an **App** component that renders both **AddExpense** form and the **ExpenseLists** boxes. We are going to create two new methods in our App component. upateDataSource and registerExpense. We are also going to set the state for our project on the **App** component constructor.
+
+Once the App state has been initialized we will use it as the source for our **ExpenseLists** component. So every time we update the App state, the controls wil re render. 
+
+####The code for ***EnumeratedList.js*** file
+```javascript
+
+    render()
+    {
+        return(
+            <div className="list-group">
+                <div className="list-group-item active">
+                    <h4 className="list-group-item-heading">
+                        {this.props.listTitle}
+                    </h4>
+                </div>
+                {this.state.source.map( function(item, key){
+                    if(this.props.enumProperty == null || this.props.enumProperty != 'count'){
+                        return(
+                            <div className="list-group-item" key={key}>
+                                <span className="badge">{item.amount}</span>{item.name}
+                            </div>
+                        );
+                    } else {
+                        return(
+                            <div className="list-group-item" key={key}>
+                                <span className="badge">{item.count}</span>{item.name}
+                            </div>
+                        );
+                    }
+                }.bind(this))}
+            </div>
+        );
+    }
+    
+```
+What we did here is add a little decision to make sure we are rendering amount on one list and the total cont on the other. **enumProperty**, **listTitle** and **source** are all properties of our component declared on the ExpenseLists.js file. 
+
+
+####Moving on. The code for ***ExpenseList.js*** file
+```javascript
+
+import React from 'react';
+import EnumeratedList from './EnumeratedList.js'; //Includes the List component
+
+class ExpenseLists extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state = {categories: this.props.source.categories, latest: this.props.source.latest};
+    }
+
+    render()
+    {
+        return(
+            <div className="row">
+                <div className="col-md-8 col-md-offset-2 text-center">
+                    <h3 className="expenseListsHeading">Lastets Expenses and Categories</h3>
+                </div>
+                <div className="col-md-4 col-md-offset-2">
+                    <EnumeratedList id="lastExpenses" listTitle="Latest Expenses" source={this.state.latest} />
+                </div>
+                <div className="col-md-4">
+                    <EnumeratedList id="topCategories" listTitle="Expense Categories" source={this.state.categories} enumProperty="count" />
+                </div>
+            </div>
+        );
+    }
+}
+
+export default ExpenseLists;
+
+```
+
+This component starts with a **constructor** to set both the **props** and the **state**. The state is later used as the source of both lists, **categories** and **latest expenses**. Since we are inheriting the state from a property, we can set the property **source** from the app itself. 
+
+
+####And now, the code for ***AddExpense.js***
+```javascript
+
+import React from 'react';
+
+class AddExpense extends React.Component
+{
+    addExpenseClick(e)
+    {
+        e.preventDefault();
+
+        var name = this.refs.name.value.trim();
+        var amount = this.refs.amount.value.trim();
+        var date = this.refs.date.value.trim();
+        var category = this.refs.category.value.trim();
+
+        // Call App Event
+        this.props.onExpenseSubmit(name, amount, date, category);
+
+        // Clean the form
+        this.refs.name.value = '';
+        this.refs.amount.value = '';
+        this.refs.date.value = '';
+    }
+
+    render()
+    {
+        return(
+            <div className="row">
+                <div className="col-md-8 col-md-offset-2">
+                    <h3>New Expense</h3>
+                    <form role="form" onSubmit={this.addExpenseClick.bind(this)}>
+                        <div className="form-group">
+                            <label for="name">Expense</label>
+                            <input type="text" className="form-control" id="name" name="name" ref="name" />
+                        </div>
+                        <div className="form-group">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <label for="amount">Amount</label>
+                                    <input type="text" className="form-control" id="amount" name="amount" ref="amount" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <label for="date">Date</label>
+                                    <input type="text" className="form-control" id="date" name="date" ref="date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label for="name">Category</label>
+                            <select id="category" name="category" ref="category" className="form-control">
+                                <option value="Transportation">Transportation</option>
+                                <option value="Food">Food</option>
+                                <option value="Entertainment">Entertainment</option>
+                            </select>
+                        </div>
+                        <p className="form-group">
+                            <input type="submit" value="Add Expense" />
+                        </p>
+                    </form>
+                </div>
+            </div> );
+    }
+}
+
+export default AddExpense;
+
+```
+
+This file adds a new function called **addExpenseClick**. The function is called whe the form is submitted to the server, it will prevent it's default behavior and call an **app.js** method declared as a property of this component. It also cleans the form. 
+
+####Finally the code for the ***app.js*** file
+```javascript
+
+import React from 'react';
+import MainNavigation from './components/MainNavigation.js';
+import AddExpense from './components/AddExpense.js';
+import ExpenseLists from './components/ExpenseLists.js';
+import _ from 'lodash';
+
+class App extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state = {source: {categories: categories, latest: latest}};
+    }
+
+    registerExpense(name, amount, date, category)
+    {
+        // TODO: Validate
+        if( name.toString().trim() == '' || date.toString().trim() == '' || category.toString().trim() == '' ){
+            console.log('Invalid Data');
+            return false;
+        }
+
+        var latestExpense = {name: name, amount: parseFloat(amount), count: 1};
+        var latestCategory = {name: category, amount: parseFloat(amount), count: 1};
+
+        // TODO: Post data to server
+
+        console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
+
+        var valueAdded = false;
+        categories = _.each(categories, function(c){
+            if( c.name == latestCategory.name ){
+                c.amount = parseFloat(c.amount) + parseFloat(latestCategory.amount);
+                c.count = parseFloat(c.count) + 1;
+                valueAdded = true;
+            }
+        });
+
+        if(!valueAdded){
+            categories.push(latestCategory);
+        }
+
+        console.log('Updated Categories: ', categories);
+        latest.push(latestExpense);
+        console.log('Updated expenses: ', latest);
+        this.setState({source: {categories: categories, latest: latest}});
+    }
+
+    updateDataSource()
+    {
+        // TODO: Actually get data from server
+        this.setState( {source: {categories: categories, latest: latest} });
+
+        // This function will run every 2 seconds
+        setTimeout(function(){
+            this.updateDataSource();
+        }.bind(this), 2000);
+
+    }
+
+    componentDidMount()
+    {
+        setTimeout(function(){
+            this.updateDataSource();
+        }.bind(this), 2000);
+    }
+
+    render()
+    {
+        return (
+            <section className="reactApp">
+                <MainNavigation />
+                <div className="row">
+                    <div className="col-md-12 text-center">
+                        <h1>Where is my money?</h1>
+                        <hr />
+                    </div>
+                </div>
+                <AddExpense onExpenseSubmit={this.registerExpense.bind(this)} />
+                <ExpenseLists source={this.state.source} />
+            </section>
+        );
+    }
+}
+
+export default App;
+
+```
+
+I went ahead and added support for [lodash](https://lodash.com) on this application. Just run the command `$ npm install lodash --save` and you are set.
+
+Lets start simple. The constructor. In this function we are setting the initial values for our component properties and state. The **registerExpense** method is passed to the **AddExpense** component as the property **onExpenseSubmit** Do you see the **.bind(this)** after the function name. That instruction alone is binding the object App to the property **onExpenseSubmit** so it can be used within it. 
+
+Now, when you click on the submit button of the form. The **AddExpense** component can call a parent function using the **onExpenseSubmit** property.
+
+The function **registerExpense** kind of validates the values are not empty, then creates a couple of objects. latestExpense and latestCategory. Once the components are created, the function uses **lodash** to iterate across the categories and add the values accordingly or pushes the new category to the **categories** array if that's the case. It also pushes the lastExpense to the **latest** array so they can be reflected on the state.
+  
+Once both the categories array and the latest array are updated, it *re-sets* the state. This event **triggers** a chain reaction that updates both lists.
+ 
+####One more thing
+
+On componentDidMount we create a **setTimeout** event to fire **updateDataSource** this function is supposed to actually connect to the server using something like **jQuery.get** to get the data. This function will be calling itself every 2 seconds or so. If you want to test it just copy and past this code into your browser console
+```javascript
+latest.push( {name: 'Cab home', amount: 20, count: 1} );
+```
+ 
+It pushes an update to the **latest** array and you should see it after the **updateDataSource** function executes. 
+ 
+####Congratulations
+
+You are now using **ReactJS** 

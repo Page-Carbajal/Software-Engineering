@@ -2,21 +2,21 @@ import React from 'react';
 
 class EnumeratedList extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-        this.state = {source: props.source};
-    }
-
-    shouldComponentMount(nextProps, nextState)
-    {
-        // If there are no items do not render
-        if(this.state.source == null){
-            return false;
-        }
-        console.log( 'Enumerted list Source: ', this.state.source );
-        return (this.props.source.length > 10)
-    }
+    //constructor(props)
+    //{
+    //    super(props);
+    //    this.state = {source: props.source};
+    //}
+    //
+    //shouldComponentMount(nextProps, nextState)
+    //{
+    //    // If there are no items do not render
+    //    if(this.state.source == null){
+    //        return false;
+    //    }
+    //    console.log( 'Enumerted list Source: ', this.state.source );
+    //    return (this.props.source.length > 10)
+    //}
 
     render()
     {
@@ -27,7 +27,7 @@ class EnumeratedList extends React.Component
                         {this.props.listTitle}
                     </h4>
                 </div>
-                {this.state.source.map( function(item, key){
+                {this.props.source.map( function(item, key){
                     if(this.props.enumProperty == null || this.props.enumProperty != 'count'){
                         return(
                             <div className="list-group-item" key={key}>

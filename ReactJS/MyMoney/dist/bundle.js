@@ -19641,9 +19641,13 @@
 
 	var _componentsAddExpenseJs2 = _interopRequireDefault(_componentsAddExpenseJs);
 
-	var _componentsExpenseListsJs = __webpack_require__(163);
+	var _componentsExpenseListsJs = __webpack_require__(161);
 
 	var _componentsExpenseListsJs2 = _interopRequireDefault(_componentsExpenseListsJs);
+
+	var _lodash = __webpack_require__(163);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
 
 	var App = (function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -19672,7 +19676,7 @@
 	            console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
 
 	            var valueAdded = false;
-	            categories = _.each(categories, function (c) {
+	            categories = _lodash2['default'].each(categories, function (c) {
 	                if (c.name == latestCategory.name) {
 	                    c.amount = parseFloat(c.amount) + parseFloat(latestCategory.amount);
 	                    c.count = parseFloat(c.count) + 1;
@@ -19868,10 +19872,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(161);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
 	var AddExpense = (function (_React$Component) {
 	    _inherits(AddExpense, _React$Component);
 
@@ -20004,6 +20004,179 @@
 
 /***/ },
 /* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _EnumeratedListJs = __webpack_require__(162);
+
+	var _EnumeratedListJs2 = _interopRequireDefault(_EnumeratedListJs);
+
+	var ExpenseLists = (function (_React$Component) {
+	    _inherits(ExpenseLists, _React$Component);
+
+	    function ExpenseLists(props) {
+	        _classCallCheck(this, ExpenseLists);
+
+	        _get(Object.getPrototypeOf(ExpenseLists.prototype), 'constructor', this).call(this, props);
+	        this.state = { categories: this.props.source.categories, latest: this.props.source.latest };
+	    }
+
+	    _createClass(ExpenseLists, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2['default'].createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-md-8 col-md-offset-2 text-center' },
+	                    _react2['default'].createElement(
+	                        'h3',
+	                        { className: 'expenseListsHeading' },
+	                        'Lastets Expenses and Categories'
+	                    )
+	                ),
+	                _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-md-4 col-md-offset-2' },
+	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { id: 'lastExpenses', listTitle: 'Latest Expenses', source: this.state.latest })
+	                ),
+	                _react2['default'].createElement(
+	                    'div',
+	                    { className: 'col-md-4' },
+	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { id: 'topCategories', listTitle: 'Expense Categories', source: this.state.categories, enumProperty: 'count' })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ExpenseLists;
+	})(_react2['default'].Component);
+
+	exports['default'] = ExpenseLists;
+	module.exports = exports['default'];
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var EnumeratedList = (function (_React$Component) {
+	    _inherits(EnumeratedList, _React$Component);
+
+	    function EnumeratedList() {
+	        _classCallCheck(this, EnumeratedList);
+
+	        _get(Object.getPrototypeOf(EnumeratedList.prototype), "constructor", this).apply(this, arguments);
+	    }
+
+	    _createClass(EnumeratedList, [{
+	        key: "render",
+
+	        //constructor(props)
+	        //{
+	        //    super(props);
+	        //    this.state = {source: props.source};
+	        //}
+	        //
+	        //shouldComponentMount(nextProps, nextState)
+	        //{
+	        //    // If there are no items do not render
+	        //    if(this.state.source == null){
+	        //        return false;
+	        //    }
+	        //    console.log( 'Enumerted list Source: ', this.state.source );
+	        //    return (this.props.source.length > 10)
+	        //}
+
+	        value: function render() {
+	            return _react2["default"].createElement(
+	                "div",
+	                { className: "list-group" },
+	                _react2["default"].createElement(
+	                    "div",
+	                    { className: "list-group-item active" },
+	                    _react2["default"].createElement(
+	                        "h4",
+	                        { className: "list-group-item-heading" },
+	                        this.props.listTitle
+	                    )
+	                ),
+	                this.props.source.map((function (item, key) {
+	                    if (this.props.enumProperty == null || this.props.enumProperty != 'count') {
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            { className: "list-group-item", key: key },
+	                            _react2["default"].createElement(
+	                                "span",
+	                                { className: "badge" },
+	                                item.amount
+	                            ),
+	                            item.name
+	                        );
+	                    } else {
+	                        return _react2["default"].createElement(
+	                            "div",
+	                            { className: "list-group-item", key: key },
+	                            _react2["default"].createElement(
+	                                "span",
+	                                { className: "badge" },
+	                                item.count
+	                            ),
+	                            item.name
+	                        );
+	                    }
+	                }).bind(this))
+	            );
+	        }
+	    }]);
+
+	    return EnumeratedList;
+	})(_react2["default"].Component);
+
+	exports["default"] = EnumeratedList;
+	module.exports = exports["default"];
+
+/***/ },
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -32358,10 +32531,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(162)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(164)(module), (function() { return this; }())))
 
 /***/ },
-/* 162 */
+/* 164 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -32375,173 +32548,6 @@
 		return module;
 	}
 
-
-/***/ },
-/* 163 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _EnumeratedListJs = __webpack_require__(164);
-
-	var _EnumeratedListJs2 = _interopRequireDefault(_EnumeratedListJs);
-
-	var ExpenseLists = (function (_React$Component) {
-	    _inherits(ExpenseLists, _React$Component);
-
-	    function ExpenseLists(props) {
-	        _classCallCheck(this, ExpenseLists);
-
-	        _get(Object.getPrototypeOf(ExpenseLists.prototype), 'constructor', this).call(this, props);
-	        this.state = { categories: this.props.source.categories, latest: this.props.source.latest };
-	    }
-
-	    _createClass(ExpenseLists, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2['default'].createElement(
-	                'div',
-	                { className: 'row' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-md-8 col-md-offset-2 text-center' },
-	                    _react2['default'].createElement(
-	                        'h3',
-	                        { className: 'expenseListsHeading' },
-	                        'Lastets Expenses and Categories'
-	                    )
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-md-4 col-md-offset-2' },
-	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { id: 'lastExpenses', listTitle: 'Latest Expenses', source: this.state.latest })
-	                ),
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'col-md-4' },
-	                    _react2['default'].createElement(_EnumeratedListJs2['default'], { id: 'topCategories', listTitle: 'Expense Categories', source: this.state.categories, enumProperty: 'count' })
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ExpenseLists;
-	})(_react2['default'].Component);
-
-	exports['default'] = ExpenseLists;
-	module.exports = exports['default'];
-
-/***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var EnumeratedList = (function (_React$Component) {
-	    _inherits(EnumeratedList, _React$Component);
-
-	    function EnumeratedList(props) {
-	        _classCallCheck(this, EnumeratedList);
-
-	        _get(Object.getPrototypeOf(EnumeratedList.prototype), 'constructor', this).call(this, props);
-	        this.state = { source: props.source };
-	    }
-
-	    _createClass(EnumeratedList, [{
-	        key: 'shouldComponentMount',
-	        value: function shouldComponentMount(nextProps, nextState) {
-	            // If there are no items do not render
-	            if (this.state.source == null) {
-	                return false;
-	            }
-	            console.log('Enumerted list Source: ', this.state.source);
-	            return this.props.source.length > 10;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2['default'].createElement(
-	                'div',
-	                { className: 'list-group' },
-	                _react2['default'].createElement(
-	                    'div',
-	                    { className: 'list-group-item active' },
-	                    _react2['default'].createElement(
-	                        'h4',
-	                        { className: 'list-group-item-heading' },
-	                        this.props.listTitle
-	                    )
-	                ),
-	                this.state.source.map((function (item, key) {
-	                    if (this.props.enumProperty == null || this.props.enumProperty != 'count') {
-	                        return _react2['default'].createElement(
-	                            'div',
-	                            { className: 'list-group-item', key: key },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'badge' },
-	                                item.amount
-	                            ),
-	                            item.name
-	                        );
-	                    } else {
-	                        return _react2['default'].createElement(
-	                            'div',
-	                            { className: 'list-group-item', key: key },
-	                            _react2['default'].createElement(
-	                                'span',
-	                                { className: 'badge' },
-	                                item.count
-	                            ),
-	                            item.name
-	                        );
-	                    }
-	                }).bind(this))
-	            );
-	        }
-	    }]);
-
-	    return EnumeratedList;
-	})(_react2['default'].Component);
-
-	exports['default'] = EnumeratedList;
-	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

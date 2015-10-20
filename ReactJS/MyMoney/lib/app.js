@@ -2,6 +2,7 @@ import React from 'react';
 import MainNavigation from './components/MainNavigation.js';
 import AddExpense from './components/AddExpense.js';
 import ExpenseLists from './components/ExpenseLists.js';
+import _ from 'lodash';
 
 class App extends React.Component
 {
