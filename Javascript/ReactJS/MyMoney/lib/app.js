@@ -2,7 +2,7 @@ import React from 'react';
 import MainNavigation from './components/MainNavigation.js';
 import AddExpense from './components/AddExpense.js';
 import ExpenseLists from './components/ExpenseLists.js';
-import _ from 'lodash';
+import _each from 'lodash/collection/forEach'; //import what we need for a smaller build
 
 class App extends React.Component
 {
@@ -28,7 +28,7 @@ class App extends React.Component
         console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
 
         var valueAdded = false;
-        categories = _.each(categories, function(c){
+        categories = _each(categories, function(c){
             if( c.name == latestCategory.name ){
                 c.amount = parseFloat(c.amount) + parseFloat(latestCategory.amount);
                 c.count = parseFloat(c.count) + 1;
