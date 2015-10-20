@@ -20,9 +20,10 @@ Once the completed this work will also be available in Spanish.
     - Hack
     - Laravel
     - Symfony
-    - WordPress
-    - Magento (maybe)
-2. Javascript
+2. CSS Preprocesors
+    - SASS
+    - Stylus
+3. Javascript
     - Frameworks
         - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/AngularJS)
         - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/ReactJS)
@@ -33,22 +34,19 @@ Once the completed this work will also be available in Spanish.
     - Webpack
     - Utilities
         - Mustache / Handlebars
-        - Loadash
+        - Lodash
         - Underscores
         - moment
     - Node
-3. X-Platform
+4. X-Platform
     - Electron
     - Xamarin
-4. Python
+5. Python
     - Django
     - TBD
-5. Erlang
+6. Erlang
     - Elixir
     - TBD
-6. CSS Preprocesors
-    - SASS
-    - Stylus
 7. IDEs
     - Atom
     - Code
@@ -57,4 +55,6 @@ Once the completed this work will also be available in Spanish.
     - WebStorm
     - PyCharm
     - RubyMine
-8. Ruby(maybe)
+8. CMS
+    - WordPress
+    - Magento (maybe)
