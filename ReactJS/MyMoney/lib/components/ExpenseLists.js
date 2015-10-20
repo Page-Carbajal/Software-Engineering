@@ -1,20 +1,14 @@
 import React from 'react';
 import EnumeratedList from './EnumeratedList.js';
 
-var categories = [
-    {name: "Transportation", count: 5, amount: 100},
-    {name: "Food", count: 20, amount: 150},
-    {name: "Entertainment", count: 2, amount: 80}
-];
-
-var latest = [
-    {name: "Subway", count: 1, amount: 10},
-    {name: "Movies", count: 1, amount: 14},
-    {name: "Pizza", count: 1, amount: 7 }
-];
-
 class ExpenseLists extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state = {categories: this.props.source.categories, latest: this.props.source.latest};
+    }
+
     render()
     {
         return(
@@ -23,10 +17,10 @@ class ExpenseLists extends React.Component
                     <h3 className="expenseListsHeading">Lastets Expenses and Categories</h3>
                 </div>
                 <div className="col-md-4 col-md-offset-2">
-                    <EnumeratedList listTitle="Latest Expenses" source={latest} enumProperty="amount" />
+                    <EnumeratedList id="lastExpenses" listTitle="Latest Expenses" source={this.state.latest} />
                 </div>
                 <div className="col-md-4">
-                    <EnumeratedList listTitle="Expense Categories" source={categories} />
+                    <EnumeratedList id="topCategories" listTitle="Expense Categories" source={this.state.categories} enumProperty="count" />
                 </div>
             </div>
         );

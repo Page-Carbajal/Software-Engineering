@@ -851,24 +851,28 @@ export default ExpenseLists;
 
 So far we have a set of components that do pretty much nothing but render HTML. Lets hook up some data and rock your world shall we.
 
-Add this code to the **ExpenseLists.js** file, just before the class declaration. 
-```javascript
+Add this code to the **index.html** file, just before the bundle.js request. 
+```html
 
-var categories = [
-    {name: "Transportation", count: 5, amount: 100},
-    {name: "Food", count: 20, amount: 150},
-    {name: "Entertainment", count: 2, amount: 80}
-];
+<script type="text/javascript">
 
-var latest = [
-    {name: "Subway", count: 1, amount: 10},
-    {name: "Movies", count: 1, amount: 14},
-    {name: "Pizza", count: 1, amount: 7 }
-];
+    var categories = [
+        {name: "Transportation", count: 5, amount: 100},
+        {name: "Food", count: 20, amount: 150},
+        {name: "Entertainment", count: 2, amount: 80}
+    ];
+
+    var latest = [
+        {name: "Subway", count: 1, amount: 10},
+        {name: "Movies", count: 1, amount: 14},
+        {name: "Pizza", count: 1, amount: 7 }
+    ];
+
+</script>
 
 ```
 
-Yes, we are going to use these variables as data source for our lists.
+Yes, we are going to use these variables as data source for our lists. The form will append data to this model and the lists will consume it. 
 
 Next, modify your **EnumeratedList.js** file so it looks something like this
 ```javascript
@@ -909,6 +913,8 @@ export default EnumeratedList;
 ```
 
 Run the webpack command and open the index.html file to test it. 
+
+You can see the data displayed on the lists. But how?. The modification we made to the component uses the **map** function to dynamically generate the list items.
 
 
 ##Retriving Data from the Server

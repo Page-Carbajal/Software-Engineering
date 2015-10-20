@@ -16,7 +16,6 @@ Once the completed this work will also be available in Spanish.
 0. Package Managers
     - Composer
     - NPM
-    - Terminal (maybe)
 1. PHP
     - Hack
     - Laravel
@@ -24,14 +23,20 @@ Once the completed this work will also be available in Spanish.
     - WordPress
     - Magento (maybe)
 2. Javascript
-    - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/wiki/Learning-AngularJS---A-Review)
-    - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS)
-    - Babel
-    - TypeScript
-    - Mustache / Handlebars
-    - Node
+    - Frameworks
+        - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/wiki/Learning-AngularJS---A-Review)
+        - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS)
+    - Transpilers
+        - Babel
+        - TypeScript
     - Gulp
     - Webpack
+    - Utilities
+        - Mustache / Handlebars
+        - Loadash
+        - Underscores
+        - moment
+    - Node
 3. X-Platform
     - Electron
     - Xamarin

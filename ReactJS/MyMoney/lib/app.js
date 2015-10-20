@@ -5,6 +5,43 @@ import ExpenseLists from './components/ExpenseLists.js';
 
 class App extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state = {source: {categories: categories, latest: latest}};
+    }
+
+    registerExpense(name, amount, date, category)
+    {
+        // TODO: Validate
+        if( name.toString().trim() == '' || date.toString().trim() == '' || category.toString().trim() == '' ){
+            console.log('Invalid Data');
+            return false;
+        }
+
+        var latestExpense = {name: name, amount: parseFloat(amount), count: 1};
+        var latestCategory = {name: category, amount: parseFloat(amount), count: 1};
+        console.log('Latest Expense: ', latestExpense, '. Latest Category: ', latestCategory);
+
+        var valueAdded = false;
+        categories = _.each(categories, function(c){
+            if( c.name == latestCategory.name ){
+                c.amount = parseFloat(c.amount) + parseFloat(latestCategory.amount);
+                c.count = parseFloat(c.count) + 1;
+                valueAdded = true;
+            }
+        });
+
+        if(!valueAdded){
+            categories.push(latestCategory);
+        }
+
+        console.log('Updated Categories: ', categories);
+        latest.push(latestExpense);
+        console.log('Updated expenses: ', latest);
+        this.setState({source: {categories: categories, latest: latest}});
+    }
+
     render()
     {
         return (
@@ -16,8 +53,8 @@ class App extends React.Component
                         <hr />
                     </div>
                 </div>
-                <AddExpense />
-                <ExpenseLists />
+                <AddExpense onExpenseSubmit={this.registerExpense.bind(this)} />
+                <ExpenseLists source={this.state.source} />
             </section>
         );
     }

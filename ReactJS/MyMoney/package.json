@@ -15,6 +15,7 @@
   "author": "Page Carbajal (http://pagecarbajal.com)",
   "license": "GPL-3.0",
   "dependencies": {
+    "lodash": "^3.10.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   },
