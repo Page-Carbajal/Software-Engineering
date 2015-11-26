@@ -12,18 +12,29 @@ This work and it's contents have the following purposes.
 Once the completed this work will also be available in Spanish.
 
 ##Table of Contents
-
-0. Package Managers
+0. Pre-requisites
+    - Git
+    - Agile Development
+        - [User Stories Framework](https://github.com/Page-Carbajal/Software-Engineering/wiki/User-Stories-Framework)
+    - Test Driven Development
+    - Continous Integration
+    - Functional Programming
+1. Package Managers
     - Composer
     - NPM
-1. PHP
+2. PHP
+    - PSR
     - Hack
     - Laravel
     - Symfony
-2. CSS Preprocesors
+    - CMS
+        - WordPress
+        - Drupal (Maybe)
+3. CSS Preprocesors
     - SASS
     - Stylus
-3. Javascript
+4. Javascript
+    - ES6
     - Frameworks
         - [AngularJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/AngularJS)
         - [ReactJS](https://github.com/Page-Carbajal/Software-Engineering/tree/master/Javascript/ReactJS)
@@ -38,23 +49,24 @@ Once the completed this work will also be available in Spanish.
         - Underscores
         - moment
     - Node
-4. X-Platform
+5. X-Platform
     - Electron
     - Xamarin
-5. Python
+6. Python
     - Django
     - TBD
-6. Erlang
+7. Erlang
     - Elixir
     - TBD
-7. IDEs
-    - Atom
-    - Code
-    - Sublime
-    - PHPStorm
-    - WebStorm
-    - PyCharm
-    - RubyMine
-8. CMS
-    - WordPress
-    - Magento (maybe)
+8. Tools
+    - IDEs
+        - Atom
+        - Code
+        - Sublime
+        - PHPStorm
+        - WebStorm
+        - PyCharm
+        - RubyMine
+    - Project Management
+        - Slack
+        - Trello
