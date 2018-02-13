@@ -1,4 +1,4 @@
-#ReactJS an Introduction
+# ReactJS an Introduction
 
 What is ReactJS?
 
@@ -6,7 +6,7 @@ Is a next generation Javascript library for building user interfaces.
 
 React introduces **JSX** so we can write reusable HTML components. This **JSX** is compiled into plain Javascript so you can use it in your app. 
 
-##Setting up an Environment
+## Setting up an Environment
 
 In this chapter we will learn how to create a **ReactJS environment** using **npm**, [Webpack](http://webpack.github.io) and [Babel](https://babeljs.io).
  
@@ -14,7 +14,7 @@ We'll talk about **webpack** and **babel** in the future. For now, lets just kno
      
 Before you start you'll need to install **npm** if you don't have it already.
 
-###Our tasks
+### Our tasks
 
 1. Create a test-reactjs project
 2. Install babel and webpack
@@ -23,7 +23,7 @@ Before you start you'll need to install **npm** if you don't have it already.
 5. Setting up webpack.config.js
 6. Build bundle.js
 
-####1. Create test-reactjs project
+#### 1. Create test-reactjs project
 
 Kickstart this project by running the command `$ npm init` on a folder named **test-reactjs**, or any other name you like.
 
@@ -45,13 +45,14 @@ Complete the process to create the project. **NPM** will then build an empty **p
 
 ```
 
-####2. Install babel and webpack
+#### 2. Install babel and webpack
 
 1. Install **babel** running the command `$ npm install babel -g`
 2. Install **webpack** globally by running the command `$ npm install webpack -g` 
 3. Add **webpack** to your project with the command `$ npm install webpack --save-dev`
 
 Your **package.json** file should look like this now.
+
 ```javascript
 
   "devDependencies": {
@@ -60,7 +61,7 @@ Your **package.json** file should look like this now.
 
 ````
 
-####3. Install react and react-dom
+#### 3. Install react and react-dom
 
 Now Lets go ahead and tell our new project that we want to use **ReactJS** 
 
@@ -68,6 +69,7 @@ Now Lets go ahead and tell our new project that we want to use **ReactJS**
 2. Then run the command `$ npm install react-dom --save` to install **react-dom**.
 
 After this process your **package.json** file should look like this.
+
 ```javascript
 
 {
@@ -94,7 +96,7 @@ After this process your **package.json** file should look like this.
 
 ```
 
-####4. Review our folder structure
+#### 4. Review our folder structure
 
 So far we have added a bunch of code to the project, and yet we have nothing to show for. Hang in there. This process is about setting up the environment for doing that. 
 
@@ -120,7 +122,7 @@ Lets run this command on the terminal `$ echo "console.log('Luk. I\'m your fathe
 
 Don't believe me just watch. Run the command `$ node index.js` from the terminal.    
 
-####5. Setting up webpack.config.js
+#### 5. Setting up webpack.config.js
 
 The file webpack.config.js will be used to indicate webpack with modules need compiling and packaging. 
 
@@ -141,7 +143,7 @@ module.exports = {
 
 ```
 
-####6. Build bundle.js
+#### 6. Build bundle.js
 
 In a traditional web environment you would traditionally try to include the a number of **.js** files. 
 
@@ -209,11 +211,12 @@ It should look something like this.
 
 Test it out again. Run the command `$ node ./dist/bundle.js`. 
 
-##I'm Your Father - Our first ReactJS example
+## I'm Your Father - Our first ReactJS example
 
 Lets create 2 new files. 
 
 Index.html with this basic code
+
 ```html
 
 <!DOCTYPE html>
@@ -232,6 +235,7 @@ Index.html with this basic code
 That's it for HTML right now. Time to run some JSX magic.
 
 But before we do that. We are going to make sure to tell **webpack** it should babelify all **.js** files with this code
+
 ```javascript
 
         loaders: [
@@ -268,11 +272,12 @@ Least but not last. Run the `$ webpack ` command from withing your project. The 
 
 Voila, you are now officially using react.  **Good Job!**
 
-###EcmaScript 6 - A taste
+###E cmaScript 6 - A taste
 
 EcmaScript is the future of Javascript. The new release of javascript dramatically improves the language by adding killer features. Link to the [New Features in EcmaScript6](https://github.com/lukehoban/es6features).
  
 Since this work is all about learning new things. Lets dump the requires in our **index.js** file and instead let us try **import**
+
 ```javascript
 
 //var React = require('react');
@@ -291,6 +296,7 @@ Well one of those new features in JS6 is **import**. Both instructions are telli
 Moving forward. Lets close this introduction to react by creating a couple of JSX components we can use with **ReactDOM.render**
 
 **index.js**
+
 ```javascript
 
 //var React = require('react');
@@ -321,6 +327,7 @@ Classes ahhh, that is pretty. What our YourFather Class does is very simple. We 
 The **React.DOM()** function gets 3 parameters. (1) Element type, (2) Properties and (3) The content of the element. While the **React.DOM.h1()** function gets onlye the last 2 parameters. 
  
 Lets build another component
+
 ```javascript
 
 //var React = require('react');
@@ -358,15 +365,16 @@ ReactDOM.render(
 The **CustomYourFather** component uses the property **name** to render the message "John Connor, I am your father!". Pretty straight forward.
 
 
-##VirtualDOM and Data Binding
+## VirtualDOM and Data Binding
 
 What is VirtualDOM? Making changes to the DOM is quite expensive. Before doing so, react evaluates the VirtualDOM to make sure only the changes needed are applied. 
 
-###The Binded I'm your father message
+### The Binded I'm your father message
 
 We are going to bind our component to the state, so that when the state changes, the components are re-rendered. 
 
 if you are coding along. Replace your current **index.js** with this code
+
 ```javascript
 
 import * as React from 'react';
@@ -428,7 +436,7 @@ ReactDOM.render( <CustomYourFather name="John Connor" />, document.getElementByI
 
 ```
 
-###Changes introduced 
+### Changes introduced 
 
 0. The constructor
 1. componentWillMount()
@@ -442,18 +450,18 @@ Before we explain what the code does. Just run the `$ webpack` command from with
 
 This code introduces you to the concept of **state**. React manages a state so it can update all the components on change. Those 4 functions we have introduced to the code you can understand simply by their names what they do. 
  
-####The constructor
+#### The constructor
 Well that works in the same way as you would expect. 
 
-####componentWillMount and componentDidMount
+#### componentWillMount and componentDidMount
 This two function are in place to add interactivity to the components.
 
-###shouldComponentUpdate
+### shouldComponentUpdate
 This function returns a bool. If ***true*** it re-renders the component.
  
 In this case we are comparing the nextState to the current state of the property name. If it doesn't change, we donnot render. 
 
-####ref and onClick
+#### ref and onClick
 
 **ref** is a react property. It indicates which **property** is binded to **which** control.
 
@@ -463,6 +471,7 @@ Here the textbox is not fully data binded. We use the button to set the state of
 So. Is React re rendering the whole element or what?
 
 Look at this HTML
+
 ```html
 <div data-reactid=".0">
     <h1 data-reactid=".0.0"><span data-reactid=".0.0.0">Hello </span><span data-reactid=".0.0.1">Luk</span></h1>
@@ -473,7 +482,7 @@ Look at this HTML
 
 React is trying to affect the DOM as little as possible. So, no. It changes only the properties that need to be updated. 
 
-##Where's My Money? - A web app to track your expenses
+## Where's My Money? - A web app to track your expenses
 
 So far so good. To this point all the code created for our first demo app is available in the [YourFatherTest](https://github.com/Page-Carbajal/Software-Engineering/tree/master/ReactJS/YourFatherTest) directory within this repository. 
 
@@ -490,6 +499,7 @@ Now let us create a small subset of components and files.
 Instead of having all of our components in a single file as we did in the introduction. We will make use of the directory structure. 
 
 Replace the contents of your **index.html** file with this code.
+
 ```html
 
 <!DOCTYPE html>
@@ -510,6 +520,7 @@ Replace the contents of your **index.html** file with this code.
 ```
 
 Create a new **root/lib/app.js** file with this code. 
+
 ```javascript
 
 import React from 'react';
@@ -527,6 +538,7 @@ export default App;
 ```
 
 Copy and paste this code into your **main.js** file
+
 ```javascript
 
 import React from 'react';
@@ -544,7 +556,7 @@ Run the webpack command to generate the bundle file. Open the index on your brow
 
 Now you know how to use import with other files. 
 
-###The Design of the app
+### The Design of the app
 
 
 This is a Single Page Application that should look like this when finished. 
@@ -566,6 +578,7 @@ Our application will be segmented as follows
 I do not know about you but I have to register every single expense as it happens. Other wise I end up asking my self **where in hell is my money?**.
 
 Replace the contents of you **index.html** file with the following code. 
+
 ```html
 
 <!DOCTYPE html>
@@ -598,9 +611,10 @@ We could of course package those files with **webpack** but that is not the purp
 
 Simple answer. All HTML will be generated with the app components.
 
-####Section 1 - Navigation
+#### Section 1 - Navigation
 
 We need a component that can provide the following HTML
+
 ```html
 
 <div className="row">
@@ -632,6 +646,7 @@ We need a component that can provide the following HTML
 At first sight seems straight forward HTML code. However, you have to notice the use of the property **className** instead of the word **class** which is reserved in JSX. 
 
 Lets build our MainNavigation component. Create a new **root/lib/components/MainNavigation.js** with the following code.
+
 ```javascript
 
 import React from 'react';
@@ -679,6 +694,7 @@ The previous code imports React and then creates the **MainNavigation** componen
 **Cool!** You have a new navigation component. Time to integrate it on our application. 
 
 Edit your **app.js** file to make it look like this
+
 ```javascript
 
 import React from 'react';
@@ -702,6 +718,7 @@ export default App;
 ```
  
 And your **main.js** file to look like this
+
 ```javascript
 
 import React from 'react';
@@ -721,7 +738,7 @@ The **app** JSX component build the whole app from the ground up. The single res
 
 Navigation does nothing right now. But for now I'm ok with that. Lets take care of more relevant stuff.
   
-####Section 2 - Content
+#### Section 2 - Content
 
 For the content section we will create 3 components
 
@@ -733,6 +750,7 @@ For the content section we will create 3 components
 
 
 **AddExpense.js**
+
 ```javascript
 
 import React from 'react'
@@ -783,6 +801,7 @@ The **AddExpense** component executes the following tasks.
 But before we do the significant code, we are going to lay the foundations for the other components.
 
 **EnumeratedList**
+
 ```javascript
 
 import React from 'react';
@@ -817,6 +836,7 @@ export default EnumeratedList;
 ```
 
 And **ExpenseLists.js**
+
 ```javascript
 
 import React from 'react';
@@ -842,11 +862,13 @@ class ExpenseLists extends React.Component
 export default ExpenseLists;
 
 ```
+
 **JSON is our friend**
 
 So far we have a set of components that do pretty much nothing but render HTML. Lets hook up some data and rock your world shall we.
 
 Add this code to the **index.html** file, just before the bundle.js request. 
+
 ```html
 
 <script type="text/javascript">
@@ -870,6 +892,7 @@ Add this code to the **index.html** file, just before the bundle.js request.
 Yes, we are going to use these variables as data source for our lists. The form will append data to this model and the lists will consume it. 
 
 Next, modify your **EnumeratedList.js** file so it looks something like this
+
 ```javascript
 
 import React from 'react';
@@ -906,7 +929,7 @@ Run the webpack command and open the index.html file to test it.
 
 You can see the data displayed on the lists. But how?. The modification we made to the component uses the **map** function to dynamically generate the list items.
 
-###Finishing Touches
+### Finishing Touches
 
 So far we have done some nice stuff of our little expenses app, but nothing significant yet. We have been using **props** to pass values to the controls and render on change. **ReactJS** says `render()` methods are written declaratively as functions of `this.props` and `this.state` -word for word-. This means every time you change the state or props of a control it wil **re-render**.
 
@@ -916,7 +939,8 @@ We have an **App** component that renders both **AddExpense** form and the **Exp
 
 Once the App state has been initialized we will use it as the source for our **ExpenseLists** component. So every time we update the App state, the controls wil re render. 
 
-####The code for ***EnumeratedList.js*** file
+#### The code for ***EnumeratedList.js*** file
+
 ```javascript
 
     render()
@@ -951,7 +975,8 @@ Once the App state has been initialized we will use it as the source for our **E
 What we did here is add a little decision to make sure we are rendering amount on one list and the total cont on the other. **enumProperty**, **listTitle** and **source** are all properties of our component declared on the ExpenseLists.js file. 
 
 
-####Moving on. The code for ***ExpenseList.js*** file
+#### Moving on. The code for ***ExpenseList.js*** file
+
 ```javascript
 
 import React from 'react';
@@ -990,7 +1015,8 @@ export default ExpenseLists;
 This component starts with a **constructor** to set both the **props** and the **state**. The state is later used as the source of both lists, **categories** and **latest expenses**. Since we are inheriting the state from a property, we can set the property **source** from the app itself. 
 
 
-####And now, the code for ***AddExpense.js***
+#### And now, the code for ***AddExpense.js***
+
 ```javascript
 
 import React from 'react';
@@ -1061,7 +1087,8 @@ export default AddExpense;
 
 This file adds a new function called **addExpenseClick**. The function is called whe the form is submitted to the server, it will prevent it's default behavior and call an **app.js** method declared as a property of this component. It also cleans the form. 
 
-####Finally the code for the ***app.js*** file
+#### Finally the code for the ***app.js*** file
+
 ```javascript
 
 import React from 'react';
@@ -1163,7 +1190,7 @@ The function **registerExpense** kind of validates the values are not empty, the
   
 Once both arrays are updated, it *re-sets* the state. This event **triggers** a chain reaction that updates both lists.
  
-####One more thing
+#### One more thing
 
 On componentDidMount we create a **setTimeout** event to fire **updateDataSource** this function is supposed to actually connect to the server using something like **jQuery.get** to get the data. This function will be calling itself every 2 seconds or so. If you want to test it just copy and past this code into your browser console
 ```javascript
@@ -1172,11 +1199,11 @@ latest.push( {name: 'Cab home', amount: 20, count: 1} );
  
 It pushes an update to the **latest** array and you should see it after the **updateDataSource** function executes. 
  
-####Congratulations
+#### Congratulations
 
 You are now using **ReactJS** 
 
-##Where to From here?
+## Where to From here?
 
 You now have a good understanding of how ReactJS works. Maybe, you are ready to try [Two-way binding](https://facebook.github.io/react/docs/two-way-binding-helpers.html). May be if you are felling sassy you can even buy the video [Mastering React JS](https://www.packtpub.com/web-development/mastering-reactjs-video). You can go to the official [React Documentation](https://facebook.github.io/react/docs/getting-started.html) 
 
